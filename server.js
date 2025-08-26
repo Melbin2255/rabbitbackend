@@ -8,7 +8,9 @@ app.use(cors());
 app.get("/api/reddit", async (req, res) => {
   try {
     const response = await axios.get("https://www.reddit.com/r/reactjs.json", {
-      headers: { "User-Agent": "reddit-proxy-app" }
+      headers: {
+        "User-Agent": "MyRedditApp/1.0 (by u/yourusername)"
+      }
     });
     res.json(response.data);
   } catch (error) {
@@ -17,8 +19,7 @@ app.get("/api/reddit", async (req, res) => {
   }
 });
 
-// Vercel will inject the correct port
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`✅ Server running on port ${port}`));
 
-export default app; // Important for Vercel
+export default app;
